@@ -16,7 +16,7 @@ The default I²C address of [STCC4](https://sensirion.com/products/catalog/STCC4
 
 ## Connect the sensor
 
-You can connect your sensor over a [SEK-SensorBridge](https://developer.sensirion.com/sensirion-products/sek-sensorbridge/).
+You can connect your sensor over a [SEK-SensorBridge](https://developer.sensirion.com/product-support/sek-sensorbridge/).
 For special setups you find the sensor pinout in the section below.
 
 <details><summary>Sensor pinout</summary>
