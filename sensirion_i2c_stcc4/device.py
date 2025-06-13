@@ -7,7 +7,7 @@
 #
 # Generator:     sensirion-driver-generator 1.2.0
 # Product:       stcc4
-# Model-Version: 3.2.0
+# Model-Version: 3.3.0
 #
 """
 The class Stcc4DeviceBase implements the low level interface of the sensor.
@@ -19,7 +19,7 @@ from sensirion_driver_adapters.transfer import execute_transfer
 from sensirion_driver_support_types.mixin_access import MixinAccess
 from sensirion_i2c_stcc4.commands import (DisableTestingMode, EnableTestingMode, EnterSleepMode, ExitSleepMode,
                                           GetProductId, MeasureSingleShot, PerformConditioning, PerformFactoryReset,
-                                          PerformForcedRecalibration, PerformSelfTest, ReadMeasurementRaw, Reinit,
+                                          PerformForcedRecalibration, PerformSelfTest, ReadMeasurementRaw,
                                           SetPressureCompensationRaw, SetRhtCompensation, StartContinuousMeasurement,
                                           StopContinuousMeasurement)
 
@@ -236,14 +236,6 @@ class Stcc4DeviceBase:
         """
         transfer = PerformFactoryReset()
         return execute_transfer(self._channel, transfer)[0]
-
-    def reinit(self):
-        """
-        The reinit command reinitializes the sensor by reloading settings from the EEPROM.
-        The sensor must be in the idle state before sending the reinit command
-        """
-        transfer = Reinit()
-        return execute_transfer(self._channel, transfer)
 
 
 class Stcc4Device(Stcc4DeviceBase):

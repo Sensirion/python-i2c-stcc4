@@ -26,10 +26,10 @@ For special setups you find the sensor pinout in the section below.
 
 | *Pin* | *Cable Color* | *Name* | *Description*  | *Comments* |
 |-------|---------------|:------:|----------------|------------|
-| 1 | yellow | SCL | I2C: Serial clock input |
-| 2 | black | GND | Ground |
-| 3 | red | VDD | Supply Voltage | 3.3V
-| 4 | green | SDA | I2C: Serial data input / output |
+| 1 | black | GND | Ground |
+| 2 | red | VDD | Supply Voltage | 2.7V to 5.5V
+| 3 | green | SDA | I2C: Serial data input / output |
+| 4 | yellow | SCL | I2C: Serial clock input |
 
 
 </p>
