@@ -7,7 +7,7 @@
 #
 # Generator:     sensirion-driver-generator 1.2.0
 # Product:       stcc4
-# Model-Version: 3.2.0
+# Model-Version: 3.3.0
 #
 """
 The transfer classes specify the data that is transferred between host and sensor. The generated transfer classes
@@ -84,7 +84,7 @@ class MeasureSingleShot(Transfer):
     def pack(self):
         return self.tx_data.pack([])
 
-    tx = TxData(CMD_ID, '>H', device_busy_delay=0.35, slave_address=None, ignore_ack=False)
+    tx = TxData(CMD_ID, '>H', device_busy_delay=0.5, slave_address=None, ignore_ack=False)
 
 
 class PerformForcedRecalibration(Transfer):
@@ -110,8 +110,8 @@ class PerformForcedRecalibration(Transfer):
     def pack(self):
         return self.tx_data.pack([self._target_CO2_concentration])
 
-    tx = TxData(CMD_ID, '>HH', device_busy_delay=0.09, slave_address=None, ignore_ack=False)
-    rx = RxData('>H')
+    tx = TxData(CMD_ID, '>Hh', device_busy_delay=0.09, slave_address=None, ignore_ack=False)
+    rx = RxData('>h')
 
 
 class GetProductId(Transfer):
@@ -272,17 +272,3 @@ class PerformFactoryReset(Transfer):
 
     tx = TxData(CMD_ID, '>H', device_busy_delay=0.09, slave_address=None, ignore_ack=False)
     rx = RxData('>H')
-
-
-class Reinit(Transfer):
-    """
-    The reinit command reinitializes the sensor by reloading settings from the EEPROM.
-    The sensor must be in the idle state before sending the reinit command
-    """
-
-    CMD_ID = 0x3646
-
-    def pack(self):
-        return self.tx_data.pack([])
-
-    tx = TxData(CMD_ID, '>H', device_busy_delay=0.01, slave_address=None, ignore_ack=False)

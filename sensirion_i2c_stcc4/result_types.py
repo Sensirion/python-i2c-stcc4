@@ -7,7 +7,7 @@
 #
 # Generator:     sensirion-driver-generator 1.2.0
 # Product:       stcc4
-# Model-Version: 3.2.0
+# Model-Version: 3.3.0
 #
 """
 The signal classes specify transformations of the raw sensor signals into a meaningful units.

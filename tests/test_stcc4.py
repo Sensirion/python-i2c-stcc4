@@ -7,7 +7,7 @@
 #
 # Generator:     sensirion-driver-generator 1.2.0
 # Product:       stcc4
-# Model-Version: 3.2.0
+# Model-Version: 3.3.0
 #
 
 import pytest
@@ -56,10 +56,6 @@ def test_perform_conditioning1(sensor):
 
 def test_stop_continuous_measurement1(sensor):
     sensor.stop_continuous_measurement()
-
-
-def test_reinit1(sensor):
-    sensor.reinit()
 
 
 def test_start_continuous_measurement1(sensor):
