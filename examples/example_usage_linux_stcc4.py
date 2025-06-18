@@ -26,22 +26,24 @@ with LinuxI2cTransceiver(args.i2c_port) as i2c_transceiver:
                          crc=CrcCalculator(8, 0x31, 0xff, 0x0))
     sensor = Stcc4Device(channel)
     sensor.stop_continuous_measurement()
-    (product_id, serial_number
-     ) = sensor.get_product_id()
-    print(f"product_id: {product_id}; "
-          f"serial_number: {serial_number}; "
-          )
+    (product_id, serial_number) = sensor.get_product_id()
+    print(f"product_id: {product_id}; serial_number: {serial_number}; ")
     sensor.start_continuous_measurement()
     for i in range(50):
+        time.sleep(1.0)
         try:
-            time.sleep(1.0)
-            (co2_concentration, temperature, relative_humidity, sensor_status
-             ) = sensor.read_measurement()
-            print(f"co2_concentration: {co2_concentration}; "
-                  f"temperature: {temperature}; "
-                  f"relative_humidity: {relative_humidity}; "
-                  f"sensor_status: {sensor_status}; "
-                  )
+            (co2_concentration, temperature, relative_humidity, sensor_status) = sensor.read_measurement()
         except BaseException:
-            continue
+            # Read can fail in case of clock shift, datasheet suggests to retry after 150ms
+            time.sleep(0.15)
+            try:
+                (co2_concentration, temperature, relative_humidity, sensor_status) = sensor.read_measurement()
+            except BaseException:
+                continue
+
+        print(f"co2_concentration: {co2_concentration}; "
+              f"temperature: {temperature}; "
+              f"relative_humidity: {relative_humidity}; "
+              f"sensor_status: {sensor_status}; ")
+
     sensor.stop_continuous_measurement()
