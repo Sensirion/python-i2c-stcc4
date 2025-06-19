@@ -42,15 +42,19 @@ with ShdlcSerialPort(port=args.serial_port, baudrate=460800) as port:
           )
     sensor.start_continuous_measurement()
     for i in range(50):
+        time.sleep(1.0)
         try:
-            time.sleep(1.0)
-            (co2_concentration, temperature, relative_humidity, sensor_status
-             ) = sensor.read_measurement()
-            print(f"co2_concentration: {co2_concentration}; "
-                  f"temperature: {temperature}; "
-                  f"relative_humidity: {relative_humidity}; "
-                  f"sensor_status: {sensor_status}; "
-                  )
+            (co2_concentration, temperature, relative_humidity, sensor_status) = sensor.read_measurement()
         except BaseException:
-            continue
+            # Read can fail in case of clock shift, datasheet suggests to retry after 150ms
+            time.sleep(0.15)
+            try:
+                (co2_concentration, temperature, relative_humidity, sensor_status) = sensor.read_measurement()
+            except BaseException:
+                continue
+        print(f"co2_concentration: {co2_concentration}; "
+              f"temperature: {temperature}; "
+              f"relative_humidity: {relative_humidity}; "
+              f"sensor_status: {sensor_status}; "
+              )
     sensor.stop_continuous_measurement()
