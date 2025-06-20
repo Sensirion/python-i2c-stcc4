@@ -7,7 +7,7 @@
 #
 # Generator:     sensirion-driver-generator 1.2.0
 # Product:       stcc4
-# Model-Version: 3.3.0
+# Model-Version: 3.4.0
 #
 """
 The class Stcc4DeviceBase implements the low level interface of the sensor.
