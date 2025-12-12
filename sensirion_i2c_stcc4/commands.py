@@ -217,7 +217,7 @@ class EnterSleepMode(Transfer):
     def pack(self):
         return self.tx_data.pack([])
 
-    tx = TxData(CMD_ID, '>H', device_busy_delay=0.002, slave_address=None, ignore_ack=False)
+    tx = TxData(CMD_ID, '>H', device_busy_delay=0.001, slave_address=None, ignore_ack=False)
 
 
 class ExitSleepMode(Transfer):
