@@ -15,8 +15,7 @@ The STCC4 is Sensirion's next generation miniature CO2 sensor for indoor air qua
 
 The default I²C address of [STCC4](https://sensirion.com/products/catalog/STCC4) is **0x64**.
 
-> [!NOTE]
-> The SEK-STCC4 board from Sensirion includes a STCC4 and a SHT4x for temperature and humidity compensation, which is controlled by the STCC4 through the integrated I2C controller interface. The provided examples are designed considering this sensor configuration.
+
 
 ## Connect the sensor
 
@@ -43,27 +42,12 @@ For special setups you find the sensor pinout in the section below.
 ## Documentation & Quickstart
 
 See the [documentation page](https://sensirion.github.io/python-i2c-stcc4) for an API description and a
-[quickstart](https://sensirion.github.io/python-i2c-stcc4/execute-measurements.html) example.
+[quickstart](https://sensirion.github.io/python-i2c-stcc4/quickstart.html) example.
 
 
 ## Contributing
 
-### Check coding style
-
-The coding style can be checked with [`flake8`](http://flake8.pycqa.org/):
-
-```bash
-pip install -e .[test]  # Install requirements
-flake8                  # Run style check
-```
-
-In addition, we check the formatting of files with
-[`editorconfig-checker`](https://editorconfig-checker.github.io/):
-
-```bash
-pip install editorconfig-checker==2.0.3   # Install requirements
-editorconfig-checker                      # Run check
-```
+In case you want to contribute to this project, please read the [contribution guidelines]((https://sensirion.github.io/python-i2c-stcc4/contributing.html)).
 
 ## License
 
